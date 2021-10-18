@@ -1,6 +1,7 @@
 from typing import Any, List, Optional
 
 from pydantic import BaseModel
+from titanic_model.processing.validation import TitanicInputSchema
 
 
 class PredictionResults(BaseModel):
@@ -8,20 +9,6 @@ class PredictionResults(BaseModel):
     version: str
     preds: Optional[List[int]]
     probs: Optional[List[float]]
-
-
-class TitanicInputSchema(BaseModel):
-    PassengerId: Optional[int]
-    Pclass: Optional[int]
-    Name: Optional[str]
-    Sex: Optional[str]
-    Age: Optional[float]
-    SibSp: Optional[int]
-    Parch: Optional[int]
-    Ticket: Optional[str]
-    Fare: Optional[float]
-    Cabin: Optional[str]
-    Embarked: Optional[str]
 
 
 class MultipleTitanicInputs(BaseModel):

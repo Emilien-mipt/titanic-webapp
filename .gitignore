@@ -1,2 +1,4 @@
 # Pycharm cache
 .idea/
+
+*/__pycache__/
