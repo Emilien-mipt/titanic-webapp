@@ -1,4 +1,4 @@
-name: Test
+name: CI
 
 on:
   push:
@@ -31,3 +31,14 @@ jobs:
         run: tox -e test_app
       - name: "Run linters (isort, black, mypy and flake8) for ${{ matrix.python-version }}"
         run: tox -e lint
+  deploy:
+    needs: tests
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: titanicwebapp
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
