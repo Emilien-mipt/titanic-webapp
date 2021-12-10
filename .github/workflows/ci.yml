@@ -42,3 +42,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: titanicwebapp
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
+          docker_build_args: ${{secrets.PIP_EXTRA_INDEX_URL}}
