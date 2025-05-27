@@ -2,9 +2,6 @@ import numpy as np
 import pandas as pd
 from fastapi.testclient import TestClient
 
-import random
-
-import json
 
 def test_make_prediction(client: TestClient, test_data: pd.DataFrame) -> None:
     # Given
@@ -18,7 +15,6 @@ def test_make_prediction(client: TestClient, test_data: pd.DataFrame) -> None:
         "http://localhost:8001/api/v1/predict",
         json=payload,
     )
-
 
     print(payload)
 
