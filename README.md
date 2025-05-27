@@ -4,7 +4,7 @@ It has been uploaded to Heroku service and is available via the link: https://ti
 
 ## How to run the app
 The app can be run locally via the [Tox](https://pypi.org/project/tox/) tool. In order to run the app 
-clone the repo, install Tox and run `tox -e run`. You can also test the app and run linters with the commands
+clone the repo, install Tox and run `tox -e run_app`. You can also test the app and run linters with the commands
 `tox -e test_app` and `tox -e lint` correspondingly.
 
 ## Docker

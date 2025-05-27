@@ -4,7 +4,8 @@ from types import FrameType
 from typing import List, cast
 
 from loguru import logger
-from pydantic import AnyHttpUrl, BaseSettings
+from pydantic import AnyHttpUrl
+from pydantic_settings import BaseSettings
 
 
 class LoggingSettings(BaseSettings):
@@ -43,7 +44,7 @@ class InterceptHandler(logging.Handler):
 
         # Find caller from where originated the logged message
         frame, depth = logging.currentframe(), 2
-        while frame.f_code.co_filename == logging.__file__:  # noqa: WPS609
+        while frame.f_code.co_filename == logging.__file__:
             frame = cast(FrameType, frame.f_back)
             depth += 1
 
@@ -62,9 +63,7 @@ def setup_app_logging(config: Settings) -> None:
         logging_logger = logging.getLogger(logger_name)
         logging_logger.handlers = [InterceptHandler(level=config.logging.LOGGING_LEVEL)]
 
-    logger.configure(
-        handlers=[{"sink": sys.stderr, "level": config.logging.LOGGING_LEVEL}]
-    )
+    logger.configure(handlers=[{"sink": sys.stderr, "level": config.logging.LOGGING_LEVEL}])
 
 
 settings = Settings()
