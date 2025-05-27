@@ -20,9 +20,7 @@ def health() -> dict:
     """
     Root Get
     """
-    status = schemas.Status(
-        name=settings.PROJECT_NAME, api_version=__version__, model_version=model_version
-    )
+    status = schemas.Status(name=settings.PROJECT_NAME, api_version=__version__, model_version=model_version)
 
     return status.dict()
 
